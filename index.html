@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopHub - Your modern online shopping destination">
+  <title>ShopHub | Modern Shopping</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="#" class="logo">Shop<span>Hub.</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#benefits">Why Us</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+      <button class="cart-btn" id="cartBtn">
+        🛒 Cart <span id="cartCount">0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">✦ YOUR EVERYDAY STYLE</span>
+        <h1>Shopping that<br>feels <span>different.</span></h1>
+        <p>
+          Discover products you'll love. Explore our collection
+          of fashion, technology and everyday essentials.
+        </p>
+        <a href="#products" class="primary-btn">Explore Products →</a>
+
+        <div class="hero-stats">
+          <div><strong>500+</strong><small>Products</small></div>
+          <div><strong>10k+</strong><small>Happy shoppers</small></div>
+          <div><strong>4.9/5</strong><small>Customer rating</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=85"
+          alt="Modern shopping store"
+        >
+        <div class="floating-card">
+          <span>✨ Trending now</span>
+          <strong>Find your next favorite.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits" id="benefits">
+      <div class="benefit">
+        <span>🚚</span>
+        <div><strong>Free Delivery</strong><small>On orders over ₹2,000</small></div>
+      </div>
+      <div class="benefit">
+        <span>🔒</span>
+        <div><strong>Secure Shopping</strong><small>Your data stays protected</small></div>
+      </div>
+      <div class="benefit">
+        <span>↩️</span>
+        <div><strong>Easy Returns</strong><small>Simple return experience</small></div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products-section" id="products">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE COLLECTION</span>
+          <h2>Find your <span>favorites.</span></h2>
+          <p>Handpicked products for your everyday life.</p>
+        </div>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search products...">
+        </div>
+      </div>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="All">All Products</button>
+        <button class="filter-btn" data-category="Fashion">Fashion</button>
+        <button class="filter-btn" data-category="Electronics">Electronics</button>
+        <button class="filter-btn" data-category="Accessories">Accessories</button>
+        <button class="filter-btn" data-category="Home">Home</button>
+      </div>
+
+      <div class="results-info">
+        <span id="resultsCount">Loading products...</span>
+        <label>
+          Sort:
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <p class="empty-message" id="emptyMessage" hidden>
+        No products found. Try another search.
+      </p>
+    </section>
+
+    <!-- Promo banner -->
+    <section class="promo">
+      <div>
+        <span class="eyebrow">A LITTLE SOMETHING FOR YOU</span>
+        <h2>Good finds. Better prices.</h2>
+        <p>Explore the collection and find something you love.</p>
+      </div>
+      <a href="#products" class="primary-btn">Shop the collection →</a>
+    </section>
+  </main>
+
+  <!-- Cart drawer backdrop -->
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- Shopping Cart -->
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">YOUR SELECTION</span>
+        <h2>Your Cart <span id="drawerCount">(0)</span></h2>
+      </div>
+      <button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+      <div class="subtotal">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">₹0</strong>
+      </div>
+      <p class="shipping-note">Shipping and taxes calculated at checkout.</p>
+      <button class="primary-btn checkout-btn" id="checkoutBtn">
+        Proceed to Checkout →
+      </button>
+      <button class="text-btn" id="continueShopping">Continue shopping</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="checkout-modal">
+      <div class="modal-heading">
+        <div>
+          <span class="eyebrow">ALMOST YOURS</span>
+          <h2>Checkout</h2>
+        </div>
+        <button class="icon-btn" id="closeCheckout" aria-label="Close checkout">✕</button>
+      </div>
+
+      <form id="checkoutForm">
+        <label for="customerName">Full name</label>
+        <input id="customerName" name="name" required
+               placeholder="Enter your name">
+
+        <label for="customerEmail">Email address</label>
+        <input id="customerEmail" name="email" type="email" required
+               placeholder="you@example.com">
+
+        <label for="customerAddress">Delivery address</label>
+        <textarea id="customerAddress" name="address" rows="3" required
+                  placeholder="House number, street, city, PIN code"></textarea>
+
+        <div class="checkout-total">
+          <span>Order total</span>
+          <strong id="checkoutTotal">₹0</strong>
+        </div>
+
+        <p class="demo-note">
+          Demo checkout only. No real payment will be processed.
+        </p>
+        <button type="submit" class="primary-btn checkout-btn">
+          Place Demo Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status"></div>
+
+  <footer class="footer">
+    <a href="#" class="logo">Shop<span>Hub.</span></a>
+    <p>Made for people who love good finds.</p>
+    <p>© <span id="year"></span> ShopHub. Demo project.</p>
+  </footer>
+
+</body>
+</html>
